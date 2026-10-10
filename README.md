@@ -18,11 +18,11 @@ Hangul4U는 Android에서 HWP, HWPX 파일을 기기 안에서 보는 뷰어입�
 
 ### 시작 화면
 
-<img src="docs/images/start-screen.png" alt="문서를 열기 전 Hangul4U 시작 화면" width="480">
+<img src="docs/images/start-screen.png" alt="문서를 열기 전 Hangul4U 시작 화면" width="320">
 
 ### 문서 보기
 
-<img src="docs/images/document-view.png" alt="HWP 문서를 연 Hangul4U 화면" width="480">
+<img src="docs/images/document-view.png" alt="HWP 문서를 연 Hangul4U 화면" width="320">
 
 ## 사용
 
