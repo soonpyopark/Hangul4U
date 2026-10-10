@@ -75,4 +75,6 @@ node tools\dev-server.mjs
 
 ## 앱 라이선스
 
-rhwp의 MIT 라이선스와 별도로, Hangul4U 자체에 적용할 배포 라이선스는 이 초안에서 정하지 않았습니다.
+Hangul4U는 [GNU General Public License v3.0](LICENSE)(GPL-3.0)으로 배포합니다.
+
+문서 표시에 쓰는 rhwp(`@rhwp/core`)는 MIT License이며, 전문은 `app\src\main\assets\viewer\LICENSE-rhwp.txt`에 있습니다.
