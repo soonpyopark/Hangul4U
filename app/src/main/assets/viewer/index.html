@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>Hangul4U</title>
+  <link rel="stylesheet" href="app.css">
+</head>
+<body>
+  <header class="mast">
+    <p id="doc-title" class="doc-title is-empty">문서를 열면 제목이 표시됩니다</p>
+    <form id="search-form" class="search">
+      <input id="search-input" type="search" placeholder="텍스트 검색" enterkeyhint="search" autocomplete="off" disabled>
+      <div class="search-nav">
+        <button id="search-prev" type="button" disabled aria-label="이전 검색 결과">◀</button>
+        <button id="search-next" type="button" disabled aria-label="다음 검색 결과">▶</button>
+      </div>
+    </form>
+  </header>
+  <header class="bar">
+    <button id="open" type="button">열기</button>
+    <button id="zoom-out" type="button" disabled aria-label="축소">−</button>
+    <button id="zoom-fit" type="button" disabled aria-label="맞춤">맞춤</button>
+    <button id="zoom-in" type="button" disabled aria-label="확대">+</button>
+    <button id="prev" type="button" disabled aria-label="이전 쪽">‹</button>
+    <button id="goto" type="button" disabled title="Ctrl+G">쪽</button>
+    <button id="next" type="button" disabled aria-label="다음 쪽">›</button>
+    <button id="about" type="button">안내</button>
+  </header>
+  <p id="status" class="status" hidden>엔진을 준비하는 중…</p>
+  <main id="scroller">
+    <p id="empty" class="empty">HWP, HWPX 파일을 열면 여기에 표시됩니다.<br>아래로 스크롤하면 다음 쪽으로 이동합니다. Ctrl+G로 쪽을 지정할 수도 있습니다.</p>
+    <div id="sheet" hidden></div>
+  </main>
+  <div id="loading-layer" class="layer loading-layer" hidden>
+    <div class="loading-card" role="dialog" aria-modal="true" aria-labelledby="loading-name">
+      <p id="loading-name" class="loading-name"></p>
+      <div class="loading-track" aria-hidden="true">
+        <div id="loading-bar" class="loading-bar"></div>
+      </div>
+      <p id="loading-percent" class="loading-percent">0%</p>
+      <button id="loading-cancel" type="button">취소</button>
+    </div>
+  </div>
+  <div id="about-layer" class="layer" hidden>
+    <div class="dialog about-dialog" role="dialog" aria-modal="true" aria-labelledby="about-title">
+      <h2 id="about-title">안내</h2>
+      <div class="about-body">
+        <div class="about-meta">
+          <p id="about-app-name" class="about-app-name">Hangul4U</p>
+          <p>버전 <span id="about-version">…</span></p>
+          <p>패키징 <span id="about-packaged">…</span></p>
+          <p>개발자 홈페이지: <a id="about-home" href="https://note4all.tistory.com" target="_blank" rel="noopener noreferrer">https://note4all.tistory.com</a></p>
+        </div>
+        <p>Hangul4U는 HWP, HWPX 파일을 이 기기 안에서 보는 독립된 뷰어입니다.</p>
+        <h3>상표</h3>
+        <p>한글, 한/글, 한컴오피스, HWP, HWPX와 관련 로고는 주식회사 한글과컴퓨터의 상표입니다. Hangul4U는 한글과컴퓨터 및 한컴오피스와 관계가 없으며, 그 프로그램의 화면, 글꼴, 아이콘, 이름을 사용하지 않습니다.</p>
+        <h3>개인정보</h3>
+        <p>고른 문서는 이 기기의 메모리에서만 열립니다. 문서를 서버로 보내지 않고, 계정을 만들지 않으며, 광고나 이용 통계를 수집하지 않습니다. 파일 접근은 사용자가 직접 고른 문서에만 허용됩니다. 문서 내용은 백업으로 기기 밖에 나가지 않습니다.</p>
+        <h3>문서</h3>
+        <p>문서의 권리는 그 문서를 만든 사람에게 있습니다. 볼 수 있는 권한이 있는 파일만 여세요.</p>
+        <h3>오픈소스</h3>
+        <p>문서 표시에는 rhwp를 사용합니다. Copyright (c) 2025-2026 Edward Kim. MIT License.</p>
+        <pre id="about-license" class="about-license">라이선스를 불러오는 중…</pre>
+        <p>이 앱은 있는 그대로 제공됩니다. 글꼴과 그리기 방식의 차이로 한글과컴퓨터 프로그램과 페이지가 다르게 보일 수 있습니다.</p>
+      </div>
+      <div class="dialog-actions">
+        <button id="about-close" type="button">닫기</button>
+      </div>
+    </div>
+  </div>
+  <div id="goto-layer" class="layer" hidden>
+    <form id="goto-form" class="dialog">
+      <h2>찾아가기</h2>
+      <label for="goto-input">쪽 번호</label>
+      <input id="goto-input" inputmode="numeric" autocomplete="off" enterkeyhint="go">
+      <p id="goto-hint" class="hint"></p>
+      <div class="dialog-actions">
+        <button id="goto-cancel" type="button">취소</button>
+        <button type="submit">이동</button>
+      </div>
+    </form>
+  </div>
+  <input id="file" type="file" accept=".hwp,.hwpx,application/x-hwp,application/vnd.hancom.hwp,application/vnd.hancom.hwpx" hidden>
+  <script type="module" src="app.js"></script>
+</body>
+</html>
